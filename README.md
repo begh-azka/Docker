@@ -34,3 +34,18 @@ ENTRYPOINT ["echo"]
 CMD ["WORLD"]
 ```
 - Above image when run as a container will print WORLD. So, echo is the command and we are passing it an argument in CMD.
+
+## Docker Networks
+1. **bridge**: Bridge networks create a software-based bridge between your host and the container. Containers connected to the network can communicate with each other, but they’re isolated from those outside the network. Each container in the network is assigned its own IP address. Default network.
+2. **host**: Containers that use the host network mode share your host’s network stack without any isolation. They aren’t allocated their own IP addresses, and port binds will be published directly to your host’s network interface. This means a container process that listens on port 80 will bind to <your_host_ip>:80. Only works for Linux containers.
+3. **overlay**: Overlay networks are distributed networks that span multiple Docker hosts. The network allows all the containers running on any of the hosts to communicate with each other without requiring OS-level routing support.
+4. **ipvlan**: IPvLAN is an advanced driver that offers precise control over the IPv4 and IPv6 addresses assigned to your containers, as well as layer 2 and 3 VLAN tagging and routing.
+5. **macvlan**: macvlan is another advanced option that allows containers to appear as physical devices on your network. It works by assigning each container in the network a unique MAC address.
+
+```sh
+docker network create -d bridge my-net
+docker run --network=my-net -itd --name=container3 busybox
+```
+
+
+
