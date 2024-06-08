@@ -9,7 +9,7 @@
 - Docker Compose relies on Docker Engine for any meaningful work.
 
 ### Build an image using Docker Compose
-```Dockerfile
+```YAML
 services: 
   my-custom-app:
     build: https://github.com/my-company/my-project.git
@@ -26,7 +26,7 @@ services:
 ### Exposing Ports in Services
 - To reach a container from the host, the ports must be exposed declaratively through the ports keyword, which also allows us to choose if we’re exposing the port differently in the host:
 
-```Dockerfile
+```YAML
 services:
   network-example-service:
     image: karthequian/helloworld:latest
@@ -45,7 +45,7 @@ services:
     ...
 ```
 ### Networks in docker-compose
-```Dockerfile
+```YAML
 services:
   network-example-service:
     image: karthequian/helloworld:latest
@@ -70,7 +70,7 @@ networks:
 - There are three types of volumes: anonymous, named, and host.
 - Docker manages both anonymous and named volumes, automatically mounting them in self-generated directories in the host.
 - Host volumes also allow us to specify an existing folder in the host.
-```Dockerfile
+```YAML
 services:
   volumes-example-service:
     image: alpine:latest
@@ -92,7 +92,7 @@ volumes:
 - The /tmp folder of the host’s file system is mapped to the /my-volumes/host-volume folder of the container. This portion of the file system is writeable, which means that the container can read and also write (and delete) files in the host machine.
 
 ### Dependencies between Services
-```Dockerfile
+```YAML
 services:
   kafka:
     image: wurstmeister/kafka:2.11-0.11.0.3
@@ -105,7 +105,7 @@ services:
 ```
 
 ### Environment Variables
-```Dockerfile
+```YAML
 services:
   database: 
     image: "postgres:${POSTGRES_VERSION}"
