@@ -1,7 +1,7 @@
-version: '3.7'
 services:
   currency-exchange:
-    image: in28min/currency-exchange:0.0.1-RELEASE
+    build: ./01-currency-exchange-microservice-basic/
+    image: azkabegh/currency-exchange
     ports:
       - "8000:8000"
     restart: always
@@ -9,7 +9,8 @@ services:
       - currency-compose-network
 
   currency-conversion:
-    image: in28min/currency-conversion:0.0.1-RELEASE
+    build: ./02-currency-conversion-microservice-basic/
+    image: azkabegh/currency-conversion
     ports:
       - "8100:8100"
     restart: always
@@ -22,4 +23,4 @@ services:
   
 # Networks to be created to facilitate communication between containers
 networks:
-  currency-compose-network:
+  currency-compose-network: {}
