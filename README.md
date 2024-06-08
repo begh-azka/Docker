@@ -11,3 +11,6 @@
 - **docker image history [image-name/image-id]:** This gives you all the layers inside an image.
 - **docker logs [container-name/id]:** Gives you logs of a running container. If you want to follow the logs in real-time, add **-f** flag to the command.
 - **docker image inspect [image-name/id]**: This lets you know the details of an image. Its layers, id, repo, env variables, ports, volumes etc.
+- **docker system df:** Show docker disk usage
+- **docker system events:** Get real events from the server.
+
