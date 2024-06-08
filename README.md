@@ -14,3 +14,16 @@
 - **docker system df:** Show docker disk usage
 - **docker system events:** Get real events from the server.
 
+## ENTRYPOINT vs CMD
+![image](https://github.com/begh-azka/Docker/assets/97597065/3f223a31-e4f4-478b-b94f-6120f0049cc6)
+
+```Dockerfile
+FROM alpine:3.14
+RUN pwd
+ENTRYPOINT ["echo", "HELLO,"]
+CMD ["WORLD"]
+```
+- When you run `docker run -P -it [image-name/id]`, it will print HELLO, WORLD.
+- When you run `docker run -P -it [image-name/id]` Universe, it will print HELLO, Universe.
+- So, Entrypoint cannot be overidden using cmd line while as CMD can be.
+- Both can be used in a single Dockerfile. CMD provides an argument to the ENTRYPOINT instruction. Executables (commands) should be kept in ENTRYPOINT while as arguments should be kept in CMD.
