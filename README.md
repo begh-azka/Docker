@@ -27,3 +27,10 @@ CMD ["WORLD"]
 - When you run `docker run -P -it [image-name/id]` Universe, it will print HELLO, Universe.
 - So, Entrypoint cannot be overidden using cmd line while as CMD can be.
 - Both can be used in a single Dockerfile. CMD provides an argument to the ENTRYPOINT instruction. Executables (commands) should be kept in ENTRYPOINT while as arguments should be kept in CMD.
+```Dockerfile
+FROM alpine:3.14
+RUN pwd
+ENTRYPOINT ["echo"]
+CMD ["WORLD"]
+```
+- Above image when run as a container will print WORLD. So, echo is the command and we are passing it an argument in CMD.
